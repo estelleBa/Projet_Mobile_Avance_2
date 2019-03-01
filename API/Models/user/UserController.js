@@ -8,6 +8,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 var User = require('./User');
+var UserFriend = require('./User_friend');
 
 //------------------------------------------------------------------------------
 
@@ -21,10 +22,9 @@ router.route('/')
 })
 // create user
 .post(function(req, res){
+  const body = req.body;
   if(body.login !== undefined && body.login !== '' &&
-  body.avatar !== undefined && body.avatar !== '' &&
   body.password !== undefined && body.password !== '') {
-    const body = req.body;
     isLoginValid(body.login, function(valid){
       if(valid==true){
         var pass = cryptPass(body.password)
@@ -100,6 +100,23 @@ router.route('/:id')
 
 //------------------------------------------------------------------------------
 
+router.route('/friend')
+// get friend list
+.get(function(req, res){
+  user_id = "5c794cc710bfae0f790c5901"
+  UserFriend.find({ user_id: user_id}).exec(function(err, doc){
+    if(doc) console.log(doc)
+  });
+  res.json({message : "Read user friends", methode : req.method});
+})
+// add friend
+.post(function(req, res){
+  var ObjectId = mongoose.Types.ObjectId(req.body.id);
+
+});
+
+//------------------------------------------------------------------------------
+
 function isLoginValid(login, callback){
   User.find({ login: login }).exec(function(err, doc){
     if(doc.length > 0) valid=false;
@@ -107,11 +124,11 @@ function isLoginValid(login, callback){
     callback(valid);
   });
 }
+function isAvatarValid(avatar){
+
+}
 function cryptPass(password){
   return bcrypt.hashSync(password, 10);
-}
-function avatarValidity(){
-
 }
 
 module.exports = router;
