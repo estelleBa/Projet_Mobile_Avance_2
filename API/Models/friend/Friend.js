@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var FriendSchema = new mongoose.Schema({
-  user_id: String,
-  friend_id: String
+  user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  addTime: Date
 });
 mongoose.model('Friend', FriendSchema);
 

@@ -16,7 +16,7 @@ router.route('/')
 .get(function(req, res){
   if(isLoggedIn(req)){
     console.log(req.session)
-    User.find({}).exec(function(err, doc){
+    User.User.find({}).exec(function(err, doc){
       res.json({users : doc, methode : req.method});
     });
   }
@@ -130,7 +130,7 @@ router.route('/login')
     const body = req.body;
     if(body.login !== undefined && body.login !== '' &&
     body.password !== undefined && body.password !== '') {
-      User.findOne({ login: body.login }).exec(function(err, doc){
+      User.User.findOne({ login: body.login }).exec(function(err, doc){
         if(doc){
           if(comparePass(body.password, doc.password)){
             req.session.user_id = mongoose.Types.ObjectId(doc._id);console.log(req.session.user_id)
@@ -154,6 +154,62 @@ router.route('/logout')
   if(isLoggedIn(req)){
     req.session.destroy();
     res.json({message : "user out", method : req.method});
+  }
+  else res.json({message : "user out", methode : req.method});
+});
+
+//------------------------------------------------------------------------------
+//
+//------------------------------------------------------------------------------
+
+router.route('/friends')
+// show friends
+.get(function(req, res){
+  if(isLoggedIn(req)){
+    var ObjectId = mongoose.Types.ObjectId(req.session.user_id);
+    const user = User.User.find({ _id: ObjectId }).populate('friends').exec(function(err, doc){
+      res.json({friends : doc, methode : req.method});
+      console.log(doc)
+    });
+    // user.friends;
+    // console.log(user.friends)
+  }
+  else res.json({message : "user out", methode : req.method});
+});
+
+//------------------------------------------------------------------------------
+
+router.route('/friends/add')
+// show friends
+.post(function(req, res){
+  if(isLoggedIn(req)){
+    var ObjectId_user = mongoose.Types.ObjectId(req.session.user_id);
+    var ObjectId_friend = mongoose.Types.ObjectId(req.body.user_id);
+    // User.User.save(function (err) {
+    //   if(err) return handleError(err);
+
+      const friend = new User.Friend({
+        friend_id: ObjectId_friend,
+        user_id: ObjectId_user,
+        addTime: Date.now()
+      });
+      friend.save(function(err) {
+        // if(err) res.json({message : "friend not added", methode : req.method});
+        // else {
+        //   User.User.find({ _id: ObjectId_user }).exec(function(err, doc){
+        //     console.log(doc)
+        //     doc.push(friend);
+        //     res.json({message : "friend added", methode : req.method});
+        //     // doc.save(function(err){
+        //     // });
+        //   });
+        // }
+      });
+      User.User.find({ _id: ObjectId_user }).exec(function(err, doc){
+        console.log(doc)
+        console.log(doc.friends)
+      });
+    // });
   }
   else res.json({message : "user out", methode : req.method});
 });
