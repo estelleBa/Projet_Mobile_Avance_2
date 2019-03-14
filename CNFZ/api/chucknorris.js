@@ -22,3 +22,15 @@ export function getRandomJokeWithText (text) {
    .then((response) => response.json())
    .catch((error) => console.error(error))
 }
+export function getPosts () {
+  const url = 'http://b7063c3e.ngrok.io/posts'
+  return fetch(url)
+   .then((response) => response.json())
+   .catch((error) => console.error(error))
+}
+export function getPostsCount (n) {
+  const url = 'http://b7063c3e.ngrok.io/posts/count/'+n
+  return fetch(url)
+   .then((response) => response.json())
+   .catch((error) => console.error(error))
+}

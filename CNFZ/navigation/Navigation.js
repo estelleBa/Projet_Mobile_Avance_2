@@ -2,12 +2,13 @@ import { createStackNavigator, createAppContainer } from 'react-navigation'
 import Home from '../components/Home'
 import Forum from '../components/Forum'
 import Categories from '../components/Categories'
+import Search from '../components/Search'
 
 const SearchStackNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      title: 'Home'
+      title: 'Chuck Norris FAN ZONE'
     }
   },
   Forum: {
@@ -15,6 +16,9 @@ const SearchStackNavigator = createStackNavigator({
   },
   Categories: {
     screen: Categories
+  },
+  Search: {
+    screen: Search
   }
 })
 

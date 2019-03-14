@@ -1,0 +1,43 @@
+Arguments: 
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js add bcrypt@3.0.0
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.13.0
+
+Node version: 
+  11.10.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/var/www/html/campus/Projet_Mobile_Avance_2/server/node_modules/abbrev'
+
+npm manifest: 
+  {
+    "name": "racing_society_api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "akakhaleesi",
+    "license": "ISC",
+    "dependencies": {
+      "bcrypt": "^3.0.4",
+      "cookie-parser": "^1.4.4",
+      "express": "^4.16.4",
+      "express-session": "^1.15.6",
+      "mongoose": "^5.4.16"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
