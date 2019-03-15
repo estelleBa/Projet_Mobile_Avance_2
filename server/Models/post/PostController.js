@@ -14,7 +14,7 @@ var Post = require('./Post');
 router.route('/')
 // get all posts
 .get(function(req, res){
-  Post.find({}).exec(function(err, doc){
+  Post.find({}).sort({_id:-1}).exec(function(err, doc){
     res.json({posts : doc, methode : req.method});
   });
 });
@@ -41,8 +41,6 @@ router.route('/count/:n')
 .get(function(req, res){
   const count = req.params.n;
   Post.countDocuments({}, function(err, doc){
-    console.log(doc)
-    console.log(count)
     if(count < doc) res.json({count: doc, update : true, methode : req.method});
     else res.json({count: doc, update : false, methode : req.method});
    });

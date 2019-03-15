@@ -23,13 +23,19 @@ export function getRandomJokeWithText (text) {
    .catch((error) => console.error(error))
 }
 export function getPosts () {
-  const url = 'http://b7063c3e.ngrok.io/posts'
+  const url = 'http://bde66ef7.ngrok.io/posts'
   return fetch(url)
    .then((response) => response.json())
    .catch((error) => console.error(error))
 }
 export function getPostsCount (n) {
-  const url = 'http://b7063c3e.ngrok.io/posts/count/'+n
+  const url = 'http://bde66ef7.ngrok.io/posts/count/'+n
+  return fetch(url)
+   .then((response) => response.json())
+   .catch((error) => console.error(error))
+}
+export function getLoc () {
+  const url = 'http://bde66ef7.ngrok.io/loc'
   return fetch(url)
    .then((response) => response.json())
    .catch((error) => console.error(error))

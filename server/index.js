@@ -12,9 +12,11 @@ app.use(session({
 }));
 
 var PostController = require('./Models/post/PostController');
+var LocationController = require('./Models/location/LocationController');
 // var UserController = require('./Models/user/UserController');
 //var FriendController = require('./Models/friend/FriendController');
 app.use('/posts', PostController);
+app.use('/loc', LocationController);
 //app.use('/friends', FriendController);
 
 var server = app.listen(8000, function(){
