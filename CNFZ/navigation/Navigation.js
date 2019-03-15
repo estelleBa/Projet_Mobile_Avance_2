@@ -3,6 +3,7 @@ import Home from '../components/Home'
 import Forum from '../components/Forum'
 import Categories from '../components/Categories'
 import Search from '../components/Search'
+import AccelerometerSensor from '../components/accelerometer'
 
 const SearchStackNavigator = createStackNavigator({
   Home: {
@@ -19,6 +20,9 @@ const SearchStackNavigator = createStackNavigator({
   },
   Search: {
     screen: Search
+  },
+  AccelerometerSensor: {
+    screen: AccelerometerSensor
   }
 })
 

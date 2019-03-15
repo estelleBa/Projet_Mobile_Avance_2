@@ -15,7 +15,6 @@ router.route('/')
 // get last loc
 .get(function(req, res){
   Location.find({}).sort({_id:-1}).limit(1).exec(function(err, doc){
-    console.log(doc[0].loc)
     res.json({loc : doc[0], methode : req.method});
   });
 });

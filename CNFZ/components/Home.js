@@ -42,28 +42,34 @@ export default class Home extends React.Component {
           </View>
         </ScrollView>
         <View style={styles.menu_container}>
-          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:10, marginTop:0, flex: 1,backgroundColor: '#151515'}}
+          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:7, marginTop:0, flex: 1,backgroundColor: '#151515'}}
           onPress={() => this.props.navigation.navigate('Forum')}>
             <View>
               <Text style = {{ color: '#fff', fontSize: 15 }}>FORUM</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:10, marginTop:0, flex: 1,backgroundColor: '#46FEA7'}}
+          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:7, marginTop:0, flex: 1,backgroundColor: '#46FEA7'}}
           onPress={() => this._displayCategories()}>
             <View>
               <Text style = {{ fontSize: 15 }}>CATEGORIES</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:10, marginTop:0, flex: 1,backgroundColor: '#46F9FE'}}
+          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:7, marginTop:0, flex: 1,backgroundColor: '#46F9FE'}}
           onPress={() => this.props.navigation.navigate('Search')}>
             <View>
               <Text style = {{ fontSize: 15 }}>SEARCH JOKE</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:10, marginTop:0, flex: 1,backgroundColor: '#469DFE'}}
+          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:7, marginTop:0, flex: 1,backgroundColor: '#469DFE'}}
           onPress={() => this._displayRandomJoke()}>
             <View>
               <Text style = {{ fontSize: 15 }}>GET RANDOM JOKE</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style = {{alignItems: 'center', justifyContent: 'center', margin:7, marginTop:0, flex: 1,backgroundColor: '#FF9CC6'}}
+          onPress={() => this.props.navigation.navigate('AccelerometerSensor')}>
+            <View>
+              <Text style = {{ fontSize: 15 }}>ACCELEROMETER</Text>
             </View>
           </TouchableOpacity>
         </View>
